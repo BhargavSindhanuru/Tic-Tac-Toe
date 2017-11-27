@@ -84,7 +84,10 @@ def computersTurn(grid,computer):
                     break
             if userwinning == False:
                 k=k+1
-        move = favourableMoves[random.randint(0,len(favourableMoves)-1)]
+        try:
+            move = favourableMoves[random.randint(0,len(favourableMoves)-1)]
+        except:
+            move = random.choice(possibleMoves(grid))
     grid[move] = computer
     drawGrid(grid)
     a = checkWin(grid, computer)
@@ -101,7 +104,7 @@ while True:
     drawGrid(list(map(str, range(9))))
 
     # Naming the user and the computer
-    a = input('What do you want to be? X or O ?(that\'s Oh and not zero)')
+    a = input('What do you want to be? X or O ? (It\'s Oh not zero!)')
     while (a != 'X' and a != 'O'):
         print('Oh! That was an invalid entry:(')
         a = input('Try again:')
